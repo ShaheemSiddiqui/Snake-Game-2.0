@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Media;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Snake
 {
@@ -21,24 +22,24 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            double  sleepTime           = 100;              //SleepTime indicates speed movement of the snake, the higher the number, the slower the speed of the snake
-            byte    right               = 0;
-            byte    left                = 1;
-            byte    down                = 2;
-            byte    up                  = 3;
-            int     lastFoodTime        = 0;
-            int     foodDissapearTime   = 10000;
-            int     health              = 3;
-            int     negativePoints      = 0;
-            int     SoundPlayTime       = 5;
-            int     WinningScore        = 150;              //Score RequiredTo Win Game
-            int     GameHeightMax       = 31;
-            int     GameHeightMin       = 4;
-            int     foodpoints          = 0;
-            int     userPoints          = negativePoints;
-            int     direction           = right;
-            bool    SoundCheck          = false;
-            string  PlayerName          = "";
+            double sleepTime = 100;              //SleepTime indicates speed movement of the snake, the higher the number, the slower the speed of the snake
+            byte right = 0;
+            byte left = 1;
+            byte down = 2;
+            byte up = 3;
+            int lastFoodTime = 0;
+            int foodDissapearTime = 10000;
+            int health = 3;
+            int negativePoints = 0;
+            int SoundPlayTime = 5;
+            int WinningScore = 150;              //Score RequiredTo Win Game
+            int GameHeightMax = 31;
+            int GameHeightMin = 4;
+            int foodpoints = 0;
+            int userPoints = negativePoints;
+            int direction = right;
+            bool SoundCheck = false;
+            string PlayerName = "";
 
             Random randomNumbersGenerator = new Random();
 
@@ -56,7 +57,7 @@ namespace Snake
                 new Position( 1,  0),   // down
                 new Position(-1,  0),   // up
             };
-            
+
             //Starts from the right side of terminal
             Console.BufferHeight = Console.WindowHeight;
             lastFoodTime = Environment.TickCount;
@@ -95,17 +96,17 @@ namespace Snake
             DrawObstacles(obstacles);
             DrawSnake(snakeElements);
 
-            for(;;)
+            for (; ; )
             {
                 direction = DirectionCheck(up, down, left, right, direction);
-                
+
                 Position snakeHead = snakeElements.Last();
                 Position nextDirection = directions[direction];
                 Position snakeNewHead = new Position(snakeHead.row + nextDirection.row, snakeHead.col + nextDirection.col);
 
                 //snake to move through terminal/program
                 if (snakeNewHead.col < 0) snakeNewHead.col = Console.WindowWidth - 1;
-                if (snakeNewHead.row < GameHeightMin) snakeNewHead.row = GameHeightMax-1;
+                if (snakeNewHead.row < GameHeightMin) snakeNewHead.row = GameHeightMax - 1;
                 if (snakeNewHead.row >= GameHeightMax) snakeNewHead.row = GameHeightMin;
                 if (snakeNewHead.col >= Console.WindowWidth) snakeNewHead.col = 0;
 
@@ -143,13 +144,13 @@ namespace Snake
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Clear();
                         Console.SetCursorPosition(55, 10);
-                        if (userPoints >= WinningScore) 
-                        { 
+                        if (userPoints >= WinningScore)
+                        {
                             Console.WriteLine("You Won!");
                         }
-                        else 
-                        { 
-                            Console.WriteLine("Game over!"); 
+                        else
+                        {
+                            Console.WriteLine("Game over!");
                         }
                         Console.SetCursorPosition(51, 12);
                         Console.WriteLine("Your Scored {0} points", userPoints);
@@ -189,7 +190,7 @@ namespace Snake
                         lastFoodTime = Environment.TickCount;
                         Console.SetCursorPosition(food[i].col, food[i].row);
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(i+1);
+                        Console.Write(i + 1);
                         sleepTime--;
 
                         //add obstacle after eating food '1, 2, 3, 4'
@@ -218,11 +219,11 @@ namespace Snake
                         Console.SetCursorPosition(food[i].col, food[i].row);
                         Console.Write(" ");
 
-                            do
-                            {
+                        do
+                        {
                             food[i] = new Position(randomNumbersGenerator.Next(GameHeightMin, GameHeightMax), randomNumbersGenerator.Next(0, Console.WindowWidth));
-                            }
-                            while (snakeElements.Contains(food[i]) || obstacles.Contains(food[i]));
+                        }
+                        while (snakeElements.Contains(food[i]) || obstacles.Contains(food[i]));
                         lastFoodTime = Environment.TickCount;
                         foodpoints++;
                     }
@@ -245,7 +246,7 @@ namespace Snake
                         SoundPlayTime--;
                     }
                 }
-            }      
+            }
         }
 
         //Method Draws Obstacles
@@ -275,7 +276,7 @@ namespace Snake
         //Method Draws Snake
         static void DrawSnake(Queue<Position> snakeElements)
         {
-            foreach (Position i in snakeElements)   
+            foreach (Position i in snakeElements)
             {
                 Console.SetCursorPosition(i.col, i.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -323,11 +324,79 @@ namespace Snake
             return PlayerName;
         }
 
-        //Method Outputs Name & Score to Text File
+        //Method Calculates Total Score for the player then Outputs Name & Total Score to Text File
         static void WriteFile(string PlayerName, int userPoints)
         {
+            bool NameExists = false;
+            int x = 0, TotalScore;
             string FileName = @"Records\records.txt";
-            File.AppendAllText(FileName, PlayerName + "\t" + userPoints + Environment.NewLine);
+            string[] Line = File.ReadAllLines(FileName);
+
+            foreach (string i in Line)
+            {
+                string name = (Regex.Replace(i, "[^a-zA-Z]", ""));              //Finds Name in the line and adds to NameList
+                if (name == PlayerName)
+                {
+                    TotalScore = Int32.Parse(Regex.Replace(i, "[^0-9]", ""));   //Finds Score in the line
+                    TotalScore = TotalScore + userPoints;                       //Totals Score
+                    Line[x] = PlayerName + " " + TotalScore;                    //Saves Name and Total Score to Line Array
+                    NameExists = true;
+                }
+                x++;
+            }
+
+            File.WriteAllText(FileName, String.Empty);                          //Deletes all data in Text File
+
+            foreach (string i in Line)                                          //Adds Each Line to the file
+            {
+                File.AppendAllText(FileName, i + Environment.NewLine);
+            }
+
+            if (NameExists == false)                                            //Adds New Player's Score to file
+            {
+                File.AppendAllText(FileName, PlayerName + " " + userPoints + Environment.NewLine);
+            }
+        }
+
+        //Displays Score Board
+        static void DisplayScoreBoard()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(40, 1);
+            Console.Write("Player Name");
+            Console.SetCursorPosition(70, 1);
+            Console.Write("Total Score");
+            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("=============================================================================================================================");
+
+            string FileName = @"Records\records.txt";
+            string[] Line = File.ReadAllLines(FileName);
+            List<string> Name = new List<string>();
+            List<string> Score = new List<string>();
+
+            foreach (string i in Line)
+            {
+                Name.Add(Regex.Replace(i, "[^a-zA-Z]", ""));
+                Score.Add(Regex.Replace(i, "[^0-9]", ""));
+            }
+
+            for (int i = 0; i < Name.Count; i++)
+            {
+                Console.SetCursorPosition(40, i+3);
+                Console.Write(Name[i]);
+                Console.SetCursorPosition(70, i+3);
+                Console.Write(Score[i]);
+            }
+            Console.SetCursorPosition(0, 0);
+            Console.Write("Press The Escape Key to Return to Main Menu");
+            while (Console.ReadKey().Key != ConsoleKey.Escape) { }
+            //MainMenu();
+        }
+
+        //Displays Main Menu
+        static void MainMenu() 
+        { 
         }
     }
 }
