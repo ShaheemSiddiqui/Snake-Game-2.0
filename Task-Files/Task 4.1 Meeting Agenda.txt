@@ -1,0 +1,34 @@
+Meeting Agenda for [Project Team A-GRP7 / Project Snake / PSGRP7]
+Date/Location: 13-APR-2020 at 21:00 [Online]
+
+Information Updates/Reminders
+=============================
+* We will be planning the code for The Snake Game. 
+* We will be working on improving the game code and eliminating errors for the next two weeks.
+* We will be using Trello to organize our Tasks.
+* We will be using Toggl to keep track of time spent on this project.
+* We will be updating the GitHub Game Repository every time we modify the game.
+* We will be updating the GitHub Game Repository Wiki everytime we add new features to the game.
+
+Decisions Needed
+================
+* Selection of Leader
+* Division of General Items
+
+General Items
+=============
+* Use of Whatsapp and Skype for instant communication.
+* Create GitHub Repository and add Members.
+* Use GitHub Wiki to Document Project and report errors and progress.
+* Create Accounts on Trello.
+* Create Project Board on Trello.
+* All Members Join Trello Board.
+* Decide Columns on Trello.
+* Create Accounts on Toggl.
+* Create Project on Toggl.
+* Join Project on Toggl and keep time spent on project.
+* Commit Project files to repository.
+* Confirm functionality of the Program.
+* Describe Code's logical flow and data structures in report.
+* Determine coding standards should to be used.
+* List down all features that could be added in the future.

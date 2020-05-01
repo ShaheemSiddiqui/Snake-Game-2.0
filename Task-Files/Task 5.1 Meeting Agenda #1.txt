@@ -1,0 +1,19 @@
+Meeting Agenda for [Project Team A-GRP7 / Project Snake / PSGRP7]
+Date/Location: 23-APR-2020 at 14:00 [Online]
+
+Information Updates/Reminders
+=============================
+* Meeting with Project Owner.
+* Tools like GitHub, Trello, Toggl needed to Track Project.
+* Update Wiki
+
+Decisions Needed
+================
+* Allocate each group member with features to work on.
+* Prioritize the order of updating features. 
+* What time and venue will the daily scrum meetings take place at?
+
+General Items
+=============
+* Find any remaining bugs and missing features.
+* Each member must complete a minimum of two new features in the next two-week sprint.

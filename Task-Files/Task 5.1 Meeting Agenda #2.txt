@@ -1,0 +1,21 @@
+Meeting Agenda for [Project Team A-GRP7 / Project Snake / PSGRP7]
+Date/Location: 24-APR-2020 at 17:00 [Online]
+
+Information Updates/Reminders
+=============================
+* Updated requirements for new feature by project owner
+* Tools like GitHub, Trello, Toggl needed to Track Project.
+* Update Wiki
+
+Decisions Needed
+================
+* Allocate all members with features to work on for next week
+* Discussion on implementation of new features
+
+General Items
+=============
+* Feature Addition - Snake with 3 lives for Week 6 - Assigned to Cheryl
+* Feature Addition - Variation of foods with different points for Week 6 - Assigned to Shaheem
+* Code Modification - Add Methods make to code simpler for Week 6 - Assigned to All Group Members
+* Feature Addition - Menu options (play score high score, and exit) for Week 7
+* Feature Addition - Save score in text file name calculation for Week 7

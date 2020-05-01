@@ -1,0 +1,25 @@
+Date/Location: 24-APRIL-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [16:43PM]
+End Time: [16:56PM]
+
+Decisions
+=========
+* Agenda changed - Real time score fixed by Cheryl Chia Siaw Yu (100079424) in Week 4
+		- New Task given by Project Owner, lecturer and tutor: Snake Health Lives
+
+*Final task for Week 5 must be updated in GitHub before the deadline (25/4/2020)
+	
+Actions
+=======
+*Main list needed (Unchanged):
+	1. The team will need to update the new tasks given and suggested by the project owner in Trello board
+	
+	2. Update codes in GitHub account through GitHub branch
+	
+	3. Cooperate to check, work, fix, modify and improve the codes
+
+	4. Target date and time for final update of Week 5: [Saturday(25/4/2020), 12:00PM]
+
+	5.  Confirm with the team whether the fixed, modified or improved code is working
+	6. Update report after a member finish their part of the group report

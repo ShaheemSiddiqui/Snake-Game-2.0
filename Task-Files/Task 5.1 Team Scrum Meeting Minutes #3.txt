@@ -1,0 +1,27 @@
+Date/Location: 30-APRIL-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [19:00PM]
+End Time: [19:21PM]
+
+Decisions
+=========
+* Agenda changed
+* Work Allocation Feature Addition - Confirm Exit Using Enter Key After the Game Ends (Shaheem)
+		  Feature Addition - Sound Effects & background Music (Shaheem)
+		  Feature Addition - Winning Game Criteria (Shaheem)
+		  Feature Addition - Game Boundaries (Shaheem)
+		  Feature Addition - "Game Over" Centred on the screen (Cheryl)
+		  Feature Addition - Reduce Snake Length (Cheryl)
+		  Feature Addition - Score & Name Output to text file (Cheryl)
+
+* Final task for Week 5 must be updated in GitHub before the deadline (01/05/2020)
+	
+Actions
+=======
+* Main list needed (Unchanged):
+	1. The team will need to update the new tasks given and suggested by the project owner in Trello board
+	2. Update codes in GitHub account through GitHub branch
+	3. Cooperate to check, work, fix, modify and improve the codes
+	4. Target date and time for final update of Week 5: [Saturday(01/05/2020), 12:00PM]
+	5. Confirm with the team whether the fixed, modified or improved code is working
+	6. Update report after a member finish their part of the group report

@@ -1,0 +1,40 @@
+Date/Location: 13-APRIL-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [21:00PM]
+End Time: [21:56PM]
+
+Decisions
+=========
+* Decisions made before the meeting (before the TIME:21:00 PM):
+	SHAHEEM SIDDIQUI (100072122) - team leader and update on meeting agenda
+	CHERYL CHIA SIAW YU (100079424) - minute member writing minutes
+
+* Decisions made during the meeting:
+	1. The team will use several softwares:
+		a. Trello for decisions
+		b. Toggl for project tracking time
+		c. github repository and wiki for updated project
+		d. WhatsApp and Skype for communication
+
+	2. Both members will be cooperating on fixing, modifying and improving the code if necessary as both members are not confident in their programming skills and knowledge
+
+	3. Both members doubt that the team can finish the logical errors in a week. Therefore, an open path or choice is made to continue what the team is able to contribute in the project
+
+	4. One of the members in the team: 
+		a. Describe code's functionality
+		b. Determine the coding standards on the project
+		c. List down possible features to add into the project
+	
+Actions
+=======
+*Main list needed:
+	1. The team will be invited from the team member or team leader's Trello, Toggl and github account
+	
+	2. Trello board and github account must be updated for fixing, modifying and improvement the member's part
+	
+	3. To check, work, fix and improve on the project code after starting Toggl to track time
+
+	4. Target date and time for final update of Week 4: [Thursday(16/4/2020), 12:00PM]
+
+	5.  Confirm with the team whether the fixed, modified or improved code is working
+	6. Update report after a member finish their part of the group report
