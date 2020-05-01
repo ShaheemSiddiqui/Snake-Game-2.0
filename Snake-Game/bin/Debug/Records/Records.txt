@@ -1,14 +1,9 @@
-PlayerX	4
-CutiePie	4
-MegaMan	2
-Worst Player	0
-XYZ	54
-ABC	9
-IJK	9
-Mark	57
-Mark	68
-Mark	92
-Mark	60
-ABC	0
-XYZ	85
-Shaheem	50
+IronMan 22
+SpiderMan 43
+BatMan 12
+SuperMan 43
+Thor 15
+Loki 42
+HawkEye 88
+Shaheem 99
+Hulk 70

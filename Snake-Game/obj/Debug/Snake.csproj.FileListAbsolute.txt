@@ -68,3 +68,10 @@ C:\Users\Shaheem\Desktop\Snake-Game\Snake-Game\Snake-Game-Update-ver1.4\obj\Debu
 C:\Users\Shaheem\Desktop\Snake-Game\Snake-Game\Snake-Game-Update-ver1.4\obj\Debug\Snake.csproj.CoreCompileInputs.cache
 C:\Users\Shaheem\Desktop\Snake-Game\Snake-Game\Snake-Game-Update-ver1.4\obj\Debug\Snake.exe
 C:\Users\Shaheem\Desktop\Snake-Game\Snake-Game\Snake-Game-Update-ver1.4\obj\Debug\Snake.pdb
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe.config
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.pdb
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csprojAssemblyReference.cache
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csproj.CoreCompileInputs.cache
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.exe
+C:\Users\Shaheem\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.pdb
