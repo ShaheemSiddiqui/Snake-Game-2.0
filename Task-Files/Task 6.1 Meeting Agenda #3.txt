@@ -9,9 +9,11 @@ Information Updates/Reminders
 Decisions Needed
 ================
 * What time and venue will the next daily scrum meetings take place at?
+* Features that needed to be added for next week’s sprint process
 
 General Items
 =============
 * Progress made since last scrum meeting
 * Plans on what needs to be done before next daily scrum meeting
 * Issues being faced during the development
+* Discuss Remaining Issues with the game
