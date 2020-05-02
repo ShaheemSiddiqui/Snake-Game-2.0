@@ -1,0 +1,20 @@
+Date/Location: 2-MAY-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [19:30PM]
+End Time: [19:36PM]
+
+Decisions
+=========
+* Decisions made during the meeting:
+	
+	1. Submit Task 6 requirements before deadline [Saturday(2/5/2020), 11:59PM]
+
+	2. Next meeting will be held early for Task 7
+
+Actions
+=======
+*Main list needed:
+	1. Check code of remaining issues
+
+	2. Target date and time for final update of Week 6: [Saturday(2/5/2020), 11:59PM]
+	
