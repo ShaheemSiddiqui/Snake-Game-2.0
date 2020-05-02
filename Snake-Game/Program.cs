@@ -88,10 +88,17 @@ namespace Snake
                 snakeElements.Enqueue(new Position(4, i));
             }
 
+
+            List<string> startMenu = new List<string>() {
+                "Start",
+                "ScoreBoard",
+                "Exit"
+            };
             Console.CursorVisible = false;
             Console.WindowHeight = 34;
             Console.WindowWidth = 125;
             BackgroundSound.PlayLooping();
+            MainMenu(startMenu);
             PlayerName = NameScreen();
             DrawObstacles(obstacles);
             DrawSnake(snakeElements);
@@ -114,10 +121,11 @@ namespace Snake
                 Console.SetCursorPosition(0, 0);
                 Console.ForegroundColor = ConsoleColor.Red;
                 userPoints = negativePoints;
-                Console.WriteLine("Your Score  Points are: {0} \t\t\t\t Snake Game \t\t\t Player: {1}\nYour Health Points are: {2}\n", userPoints, PlayerName, health);
+                Console.WriteLine("Your Score  Points are: {0} \t\t\t\t Snake Game \t\t\t\t Player: {1}\nYour Health Points are: {2}", userPoints, PlayerName, health);
                 Console.WriteLine("=============================================================================================================================");
                 Console.SetCursorPosition(0, 31);
                 Console.WriteLine("=============================================================================================================================");
+                
 
 
                 //Winning Game
@@ -158,6 +166,7 @@ namespace Snake
                         WriteFile(PlayerName, userPoints);      //Write Name and Score to text File
                         Console.Write("Press The Enter Key to Exit");
                         while (Console.ReadKey().Key != ConsoleKey.Enter) { }
+
                         return;
                     }
                 }
@@ -395,8 +404,63 @@ namespace Snake
         }
 
         //Displays Main Menu
-        static void MainMenu() 
+        static void MainMenu(List<string> menuOpts) 
         { 
+           int index = 0;
+            //List print out options for user to select by pressing up and down keys
+            while (true)
+            {   
+                for (int i = 0; i < menuOpts.Count; i++)
+                {   
+                     Console.SetCursorPosition(55,13+i);
+                     if (i == index)
+                     {
+                        //selecton background colour
+                        Console.BackgroundColor = ConsoleColor.Red;
+
+                        //foreground
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }else
+                    {
+                        Console.ResetColor();
+                    }
+                     Console.WriteLine(menuOpts[i]); //prints out the list
+            }
+            //obtains the next character or any key pressed by the user.  
+            ConsoleKeyInfo presskey = Console.ReadKey();
+            
+            //moves selection down by index
+            if (presskey.Key == ConsoleKey.DownArrow)
+            {
+                if (index == menuOpts.Count-1)
+                {
+                    index = 0;
+                }else { index++; }
+
+                //moves selection up by index
+                }else if (presskey.Key == ConsoleKey.UpArrow)
+                {
+                    if (index <= 0)
+                    {
+                        index = menuOpts.Count-1; 
+                    }else { index--; }
+                }else if (presskey.Key == ConsoleKey.Enter )
+                {
+                    //Start to proceed to the game
+                   if (index==0)
+                    {   Console.Clear();
+                        return;}
+
+                   //displays scoreboard of each player
+                   else if (index == 1)
+                    {DisplayScoreBoard();}
+
+                   //select 'Exit' to close the program
+                   else
+                    {Environment.Exit(0);}
+                }
+                Console.Clear();
+            }
         }
     }
 }
