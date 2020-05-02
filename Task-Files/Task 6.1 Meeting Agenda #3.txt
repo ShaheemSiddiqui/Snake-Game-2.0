@@ -1,0 +1,17 @@
+Meeting Agenda for [Project Team A-GRP7 / Project Snake / PSGRP7]
+Date/Location: 02-MAY-2020 at 19:30 [Online]
+
+Information Updates/Reminders
+=============================
+* Tools like GitHub, Trello, Toggl needed to Track Project.
+* Update Wiki
+
+Decisions Needed
+================
+* What time and venue will the next daily scrum meetings take place at?
+
+General Items
+=============
+* Progress made since last scrum meeting
+* Plans on what needs to be done before next daily scrum meeting
+* Issues being faced during the development
