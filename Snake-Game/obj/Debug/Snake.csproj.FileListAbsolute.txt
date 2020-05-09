@@ -82,3 +82,10 @@ C:\Users\Asus\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csprojAssemblyRe
 C:\Users\Asus\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.exe
 C:\Users\Asus\Desktop\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.pdb
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csprojAssemblyReference.cache
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.exe
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.pdb
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe.config
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe
+C:\Users\Asus\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.pdb
