@@ -205,12 +205,12 @@ namespace Snake
         { 
            int index = 0;
            string result = "";
-            //List print out options for user to select by pressing up and down keys
+            
             while(true)
             {  
-                if (pointsGet >= pointsAim)
+                if (pointsGet >= pointsAim)                 //Points that reached the winning score wins the game
                 {
-                    if (pointsGet == 0 || pointsAim == 0 ) 
+                    if (pointsGet == 0 || pointsAim == 0 )  //Points will be null if its 0 points for both startMenu and Pausemenu
                     {
                         pointsAim = pointsGet =null; 
                         result = "";
@@ -218,9 +218,9 @@ namespace Snake
                         result = "YOU WIN!";
                     }
                 }
-                else if (pointsGet <= pointsAim)
+                else if (pointsGet <= pointsAim)             //if points lower or equal than expected points to win loses the game and show the result 'GAME OVER!'
                 {
-                    if (pointsGet == 0 || pointsAim == 0 ) 
+                    if (pointsGet == 0 || pointsAim == 0 )  //Points will be null if its 0 points for both startMenu and Pausemenu
                     {
                         pointsAim = pointsGet = null; 
                         result = "";
@@ -228,7 +228,7 @@ namespace Snake
                         result = "GAME OVER!";
                     }
                 }
-                if (noPoints == true) 
+                if (noPoints == true)                       //to show the result 'GAME OVER!' after player gets 0 points
                 {
                     Console.SetCursorPosition(59,10); 
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -236,11 +236,13 @@ namespace Snake
                 else if (noPoints == false) 
                 {result = "";}
                
-
                 Console.Clear();
                 Console.SetCursorPosition(59,10); 
                 Console.ForegroundColor = ConsoleColor.Red;
+                //statement results for only back menu
                 Console.WriteLine(result +"\n\t\t\t\t\t\t      "+statement);
+
+                //List print out options for user to select by pressing up and down keys
                 for (int i = 0; i < menuOpts.Count; i++)
                 {   
                     Console.SetCursorPosition(55,13 + i); 
@@ -323,39 +325,40 @@ namespace Snake
             }
         }
 
+        //Music plays or mute as the player so desires to choose
         static void PlayMusic(string SoundType)
         {
+            //different variable type of sounds 
             var BiteSound = new SoundPlayer(); BiteSound.SoundLocation = @"Sounds\Bite.wav";
             var DamageSound = new SoundPlayer(); DamageSound.SoundLocation = @"Sounds\Damage.wav";
             var GameOverSound = new SoundPlayer(); GameOverSound.SoundLocation = @"Sounds\GameOver.wav";
             var BackgroundSound = new SoundPlayer(); BackgroundSound.SoundLocation = @"Sounds\Background.wav";
 
-            if (SoundMute == true) 
+            if (SoundMute == true)                      //if player selects 'Mute Music' the music stops
             { 
                 BackgroundSound.Stop(); 
             }
             else
             {
-                if (SoundType == "Background")
+                if (SoundType == "Background")          //background music will loop throughout the whole game
                 {
                     BackgroundSound.PlayLooping();
                 }
-                else if (SoundType == "GameOver")
+                else if (SoundType == "GameOver")       //game over music
                 {
                     GameOverSound.Play();
                 }
-                else if (SoundType == "Damage")
+                else if (SoundType == "Damage")         //sound effects for hitting an obstacle or biting its own body
                 {
                     DamageSound.Play();
                 }
-                else if (SoundType == "Bite")
+                else if (SoundType == "Bite")           //sound effects of a bite sound when the snake eats food
                 {
                     BiteSound.Play();
                 }
             }
         }
 
-        
         static void Main(string[] args)
         {
             while (true)
@@ -506,11 +509,11 @@ namespace Snake
                         
                         if (health == 0)
                         {
-                            
                             PlayMusic("GameOver");
-                            WriteFile(PlayerName, userPoints);      //Write Name and Score to text File     
+                            WriteFile(PlayerName, userPoints);      //Write Name and Score to text File   
+                            
                             LineStatement = "You Scored " + userPoints + " points!";
-                            MainMenu(OverMenu, LineStatement, userPoints, WinScore, true);
+                            MainMenu(OverMenu, LineStatement, userPoints, WinScore, true);      //shows the results after game ends and shows the back menu whether to quit, continue the game, check scoreboard or mute the music
                             break;
                         }
                     }
