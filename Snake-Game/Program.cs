@@ -102,19 +102,20 @@ namespace Snake
                 Console.SetCursorPosition(43, 16);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please Enter Your Name and Press Enter");
-                Console.SetCursorPosition(59, 17);
+                Console.SetCursorPosition(57, 17);
                 PlayerName = Console.ReadLine();
 
-                if (PlayerName == "") Message = "You Must Enter Your Name To Play";
-                else if (!Regex.IsMatch(PlayerName, @"^[a-zA-Z]+$")) Message = "Your Name Can Only Contain Alphabets";
-                else if (PlayerName.Length > 12) Message = "Your Name Can Not Be More Than 12 Characters Long";
-                else if (PlayerName.Length < 3) Message = "Your Name Must Be At Least 3 Characters Long";
+                if (PlayerName == "") Message = "   You Must Enter Your Name To Play \n\t\t\t\t\t   (Press Enter to Input Your Name Again)";
+                else if (!Regex.IsMatch(PlayerName, @"^[a-zA-Z]+$")) Message = "Your Name Can Only Contain Alphabets \n\t\t\t\t\t  (Press Enter to Input Your Name Again)";
+                else if (PlayerName.Length > 12) Message = "Your Name Can Not Be More Than 12 Characters Long \n\t\t\t\t\t      (Press Enter to Input Your Name Again)";
+                else if (PlayerName.Length < 3) Message = "Your Name Must Be At Least 3 Characters Long \n\t\t\t\t\t      (Press Enter to Input Your Name Again)";
                 else break;
 
                 Console.Clear();
                 Console.SetCursorPosition(43, 16);
                 Console.WriteLine(Message);
                 Console.ReadKey();
+                Console.Clear();
             }
 
             Console.Clear();
@@ -187,7 +188,7 @@ namespace Snake
             }
 
             Console.SetCursorPosition(36, 31);
-            Console.Write("[Press 'ENTER' To Go Back]");
+            Console.Write("\t\t[Press 'ENTER' To Go Back]");
             
             for (;;) 
             {
@@ -244,7 +245,19 @@ namespace Snake
                 Console.ForegroundColor = ConsoleColor.Red;
                 //statement results for only back menu
                 Console.WriteLine(result +"\n\t\t\t\t\t\t      "+statement);
-
+                //prints out the game title
+                Console.SetCursorPosition(41, 2);
+                Console.WriteLine("   ███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗");
+                Console.SetCursorPosition(41, 3);
+                Console.WriteLine("   ██╔════╝████╗  ██║██╔══██╗██║ ██╔╝██╔════╝");
+                Console.SetCursorPosition(41, 4);
+                Console.WriteLine("   ███████╗██╔██╗ ██║███████║█████╔╝ █████╗");
+                Console.SetCursorPosition(41, 5);
+                Console.WriteLine("   ╚════██║██║╚██╗██║██╔══██║██╔═██╗ ██╔══╝");
+                Console.SetCursorPosition(41, 6);
+                Console.WriteLine("   ███████║██║ ╚████║██║  ██║██║  ██╗███████╗");
+                Console.SetCursorPosition(41, 7);
+                Console.WriteLine("   ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝");
                 //List print out options for user to select by pressing up and down keys
                 for (int i = 0; i < menuOpts.Count; i++)
                 {   
@@ -263,20 +276,6 @@ namespace Snake
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(menuOpts[i]);//prints out the list
                 }
-
-                //prints out the title
-                Console.SetCursorPosition(41, 2);
-                Console.WriteLine("███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗");
-                Console.SetCursorPosition(41, 3);
-                Console.WriteLine("██╔════╝████╗  ██║██╔══██╗██║ ██╔╝██╔════╝");
-                Console.SetCursorPosition(41, 4);
-                Console.WriteLine("███████╗██╔██╗ ██║███████║█████╔╝ █████╗");
-                Console.SetCursorPosition(41, 5);
-                Console.WriteLine("╚════██║██║╚██╗██║██╔══██║██╔═██╗ ██╔══╝");
-                Console.SetCursorPosition(41, 6);
-                Console.WriteLine("███████║██║ ╚████║██║  ██║██║  ██╗███████╗");
-                Console.SetCursorPosition(41, 7);
-                Console.WriteLine("╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝");
 
                 //obtains the next character or any key pressed by the user.  
                 ConsoleKeyInfo presskey = Console.ReadKey();
