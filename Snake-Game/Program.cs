@@ -5,6 +5,7 @@ using System.Threading;
 using System.Media;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace Snake
 {
@@ -86,7 +87,7 @@ namespace Snake
                 else if (userInput.Key == ConsoleKey.Enter && pause == false)
                 {
                     Console.Clear();
-                    MainMenu(PauseMenu);
+                    MainMenu(PauseMenu, "", 0, 0,false);
                 }
             } return direction;
         }
@@ -107,7 +108,7 @@ namespace Snake
                 if (PlayerName == "") Message = "You Must Enter Your Name To Play";
                 else if (!Regex.IsMatch(PlayerName, @"^[a-zA-Z]+$")) Message = "Your Name Can Only Contain Alphabets";
                 else if (PlayerName.Length > 12) Message = "Your Name Can Not Be More Than 12 Characters Long";
-                else if (PlayerName.Length < 3) Message = "Your Name Must Be Atleast 3 Characters Long";
+                else if (PlayerName.Length < 3) Message = "Your Name Must Be At Least 3 Characters Long";
                 else break;
 
                 Console.Clear();
@@ -200,13 +201,46 @@ namespace Snake
         }
 
         //Displays Main Menu
-        static void MainMenu(List<string> menuOpts) 
+        static void MainMenu(List<string> menuOpts, string statement, int? pointsGet, int? pointsAim, bool noPoints)
         { 
            int index = 0;
+           string result = "";
             //List print out options for user to select by pressing up and down keys
-            
             while(true)
             {  
+                if (pointsGet >= pointsAim)
+                {
+                    if (pointsGet == 0 || pointsAim == 0 ) 
+                    {
+                        pointsAim = pointsGet =null; 
+                        result = "";
+                    }else{
+                        result = "YOU WIN!";
+                    }
+                }
+                else if (pointsGet <= pointsAim)
+                {
+                    if (pointsGet == 0 || pointsAim == 0 ) 
+                    {
+                        pointsAim = pointsGet = null; 
+                        result = "";
+                    }else{
+                        result = "GAME OVER!";
+                    }
+                }
+                if (noPoints == true) 
+                {
+                    Console.SetCursorPosition(59,10); 
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    result = "GAME OVER!";}
+                else if (noPoints == false) 
+                {result = "";}
+               
+
+                Console.Clear();
+                Console.SetCursorPosition(59,10); 
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(result +"\n\t\t\t\t\t\t      "+statement);
                 for (int i = 0; i < menuOpts.Count; i++)
                 {   
                     Console.SetCursorPosition(55,13 + i); 
@@ -222,8 +256,6 @@ namespace Snake
                         Console.ResetColor();
                     }
                     Console.ForegroundColor = ConsoleColor.Red;
-                    if (SoundMute == false){ menuOpts[4] = "|   Mute Music   |"; }
-                    else{ menuOpts[4] = "|   Play Music   |"; }
                     Console.WriteLine(menuOpts[i]);//prints out the list
             }
                 //obtains the next character or any key pressed by the user.  
@@ -323,6 +355,7 @@ namespace Snake
             }
         }
 
+        
         static void Main(string[] args)
         {
             while (true)
@@ -343,7 +376,8 @@ namespace Snake
                 int userPoints = negativePoints;
                 int direction = right;
                 bool SoundCheck = false, pauseGame = false;
-                string PlayerName = "";
+                string PlayerName, LineStatement;
+                PlayerName = LineStatement = "";
 
                 Random randomNumbersGenerator = new Random();
 
@@ -417,7 +451,7 @@ namespace Snake
 
                 SoundMute = false;
                 PlayMusic("Background");
-                MainMenu(startMenu);
+                MainMenu(startMenu, LineStatement, 0,0, false);
                 PlayMusic("Background");
 
                 PlayerName = NameScreen();
@@ -472,27 +506,11 @@ namespace Snake
                         
                         if (health == 0)
                         {
+                            
                             PlayMusic("GameOver");
                             WriteFile(PlayerName, userPoints);      //Write Name and Score to text File     
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Clear();
-                            Console.SetCursorPosition(59,9);
-                            if (userPoints >= WinScore)
-                            {
-                                Console.WriteLine("YOU WIN!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("GAME OVER!");
-                            }
-                            
-                            foreach (string i in OverMenu)
-                            {
-                                Console.SetCursorPosition(54, 10);
-                                Console.WriteLine("Your Scored {0} points", userPoints);
-                                MainMenu(OverMenu);
-                            }
-                            Console.SetCursorPosition(50, 14);                      
+                            LineStatement = "You Scored " + userPoints + " points!";
+                            MainMenu(OverMenu, LineStatement, userPoints, WinScore, true);
                             break;
                         }
                     }
