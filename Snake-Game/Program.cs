@@ -203,10 +203,13 @@ namespace Snake
         //Displays Main Menu
         static void MainMenu(List<string> menuOpts, string statement, int? pointsGet, int? pointsAim, bool noPoints)
         { 
-           int index = 0;
-           string result = "";
-            
-            while(true)
+            int index = 0;
+            string result = "";
+
+            if (SoundMute == true) menuOpts[4] = "|   Play Music   |";
+            else menuOpts[4] = "|   Mute Music   |";
+
+            while (true)
             {  
                 if (pointsGet >= pointsAim)                 //Points that reached the winning score wins the game
                 {
@@ -311,7 +314,7 @@ namespace Snake
                         }
                         else
                         { 
-                            SoundMute = true; 
+                            SoundMute = true;
                             menuOpts[4] = "|   Play Music   |";
                         }
                         PlayMusic("Background");
@@ -452,10 +455,8 @@ namespace Snake
                 Console.WindowHeight = 34;
                 Console.WindowWidth = 125;
 
-                SoundMute = false;
                 PlayMusic("Background");
                 MainMenu(startMenu, LineStatement, 0,0, false);
-                PlayMusic("Background");
 
                 PlayerName = NameScreen();
                 DrawSnake(snakeElements);
