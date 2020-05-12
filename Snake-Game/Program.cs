@@ -262,7 +262,22 @@ namespace Snake
                     }
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(menuOpts[i]);//prints out the list
-            }
+                }
+
+                //prints out the title
+                Console.SetCursorPosition(41, 2);
+                Console.WriteLine("███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗");
+                Console.SetCursorPosition(41, 3);
+                Console.WriteLine("██╔════╝████╗  ██║██╔══██╗██║ ██╔╝██╔════╝");
+                Console.SetCursorPosition(41, 4);
+                Console.WriteLine("███████╗██╔██╗ ██║███████║█████╔╝ █████╗");
+                Console.SetCursorPosition(41, 5);
+                Console.WriteLine("╚════██║██║╚██╗██║██╔══██║██╔═██╗ ██╔══╝");
+                Console.SetCursorPosition(41, 6);
+                Console.WriteLine("███████║██║ ╚████║██║  ██║██║  ██╗███████╗");
+                Console.SetCursorPosition(41, 7);
+                Console.WriteLine("╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝");
+
                 //obtains the next character or any key pressed by the user.  
                 ConsoleKeyInfo presskey = Console.ReadKey();
 
@@ -364,6 +379,7 @@ namespace Snake
 
         static void Main(string[] args)
         {
+            Console.Title = "Snake";
             while (true)
             {
                 double sleepTime = 100;              //SleepTime indicates speed movement of the snake, the higher the number, the slower the speed of the snake
