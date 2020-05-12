@@ -20,6 +20,8 @@ namespace Snake
     }
     class Program
     {
+        public static bool SoundMute = false;
+
         //Method Draws Obstacles
         static void DrawObstacles(List<Position> obstacles)
         {
@@ -56,11 +58,15 @@ namespace Snake
         }
 
         //Method Checks Direction
-        static int InputCheck(byte up, byte down, byte left, byte right, int direction,bool pause)
+        static int InputCheck(byte up, byte down, byte left, byte right, int direction, bool pause, List<string> PauseMenu)
         {
             while (Console.KeyAvailable)
             {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.SetCursorPosition(68,1);
                 ConsoleKeyInfo userInput = Console.ReadKey();
+                Console.SetCursorPosition(68, 1);
+                Console.WriteLine(" ");
                 if (userInput.Key == ConsoleKey.LeftArrow)
                 {
                     if (direction != right) direction = left;
@@ -76,40 +82,40 @@ namespace Snake
                 else if (userInput.Key == ConsoleKey.DownArrow)
                 {
                     if (direction != up) direction = down;
-                }else if (pause == false)
+                }
+                else if (userInput.Key == ConsoleKey.Enter && pause == false)
                 {
-                    int numTimes = 0;
-                    if(userInput.Key == ConsoleKey.Spacebar && numTimes == 0)
-                    {
-                        pause = true;
-                        Console.SetCursorPosition(36,12);
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("   \n\t\t\t\t    --------------------------------------------------   \n\t\t\t\t    ||||||||||||||||||| GAME PAUSE |||||||||||||||||||   \n\t\t\t\t    ||||||| Please press 'SPACEBAR' to Continue ||||||   \n\t\t\t\t    || Else it will return to the game in 1 minute |||   \n\t\t\t\t    --------------------------------------------------   "); 
-                        Thread.Sleep(30000);
-                        Console.Clear();
-                        numTimes+=1;
-                        if (userInput.Key != ConsoleKey.Spacebar && numTimes == 1)
-                        {
-                            return 0;
-                            numTimes -=1;
-                            
-                        }
-                    }
+                    Console.Clear();
+                    MainMenu(PauseMenu);
                 }
             } return direction;
         }
-       
+
         //Method Displays Name Request Screen
         static string NameScreen()
         {
-            string PlayerName;
+            string PlayerName, Message;
             Console.Clear();
-            Console.SetCursorPosition(43, 16);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Please Enter Your Name and Press Enter");
-            Console.SetCursorPosition(59, 17);
-            PlayerName = Console.ReadLine();
+            for (;;)
+            {
+                Console.SetCursorPosition(43, 16);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please Enter Your Name and Press Enter");
+                Console.SetCursorPosition(59, 17);
+                PlayerName = Console.ReadLine();
+
+                if (PlayerName == "") Message = "You Must Enter Your Name To Play";
+                else if (!Regex.IsMatch(PlayerName, @"^[a-zA-Z]+$")) Message = "Your Name Can Only Contain Alphabets";
+                else if (PlayerName.Length > 12) Message = "Your Name Can Not Be More Than 12 Characters Long";
+                else if (PlayerName.Length < 3) Message = "Your Name Must Be Atleast 3 Characters Long";
+                else break;
+
+                Console.Clear();
+                Console.SetCursorPosition(43, 16);
+                Console.WriteLine(Message);
+                Console.ReadKey();
+            }
+
             Console.Clear();
             return PlayerName;
         }
@@ -173,15 +179,24 @@ namespace Snake
 
             for (int i = 0; i < Name.Count; i++)
             {
-                Console.SetCursorPosition(40, i+3);
+                Console.SetCursorPosition(40, i + 3);
                 Console.Write(Name[i]);
-                Console.SetCursorPosition(70, i+3);
+                Console.SetCursorPosition(70, i + 3);
                 Console.Write(Score[i]);
             }
-            Console.SetCursorPosition(0, 0);
-            Console.Write("Press The Escape Key to Return to Main Menu");
-            while (Console.ReadKey().Key != ConsoleKey.Escape) { }
-            //MainMenu();
+
+            Console.SetCursorPosition(36, 31);
+            Console.Write("[Press 'ENTER' To Go Back]");
+            
+            for (;;) 
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.SetCursorPosition(0, 32);
+                ConsoleKeyInfo presskey = Console.ReadKey();
+                Console.SetCursorPosition(0, 32);
+                Console.WriteLine(" ");
+                if (presskey.Key == ConsoleKey.Enter) break;
+            }
         }
 
         //Displays Main Menu
@@ -195,51 +210,116 @@ namespace Snake
                 for (int i = 0; i < menuOpts.Count; i++)
                 {   
                     Console.SetCursorPosition(55,13 + i); 
-                     if (i == index)
-                     {
+                    if (i == index)
+                    {
                         //selecton background colour
-                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
                         //foreground
                         Console.ForegroundColor = ConsoleColor.Black; 
-                    }else
+                    }
+                    else
                     {
                         Console.ResetColor();
                     }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    if (SoundMute == false){ menuOpts[4] = "|   Mute Music   |"; }
+                    else{ menuOpts[4] = "|   Play Music   |"; }
                     Console.WriteLine(menuOpts[i]);//prints out the list
             }
                 //obtains the next character or any key pressed by the user.  
                 ConsoleKeyInfo presskey = Console.ReadKey();
-            
+
                 //moves selection down by index
                 if (presskey.Key == ConsoleKey.DownArrow)
-            {
-                if (index == menuOpts.Count-1)
-                {index = 0;
-                 Console.BackgroundColor = ConsoleColor.Black;
-                }else { index += 2; }
-
-                //moves selection up by index
-            }else if (presskey.Key == ConsoleKey.UpArrow)
-                {if (index <= 0)
-                    {index = menuOpts.Count-1; 
-                    }else { index -= 2;Console.BackgroundColor = ConsoleColor.Black;}
-                    
-            }else if (presskey.Key == ConsoleKey.Enter )
-                {//Start to proceed to the game
-                   if (index == 0)
-                    {Console.Clear();
-                     return;
+                {
+                    if (index == menuOpts.Count - 1)
+                    {
+                        index = 0;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else
+                    {
+                        index += 2;
                     }
 
-                   //displays scoreboard of each player
-                   else if (index == 2)
-                    {DisplayScoreBoard();}
-
-                   //select 'Exit' to close the program
-                   else if (index == 4)
-                    {Environment.Exit(0);}
+                    //moves selection up by index
+                }
+                else if (presskey.Key == ConsoleKey.UpArrow)
+                {
+                    if (index <= 0)
+                    {
+                        index = menuOpts.Count - 1;
+                    }
+                    else
+                    {
+                        index -= 2;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                }
+                else if (presskey.Key == ConsoleKey.Enter)
+                {
+                    //Start to proceed to the game
+                    if (index == 0)
+                    {
+                        Console.Clear();
+                        return;
+                    }
+                    else if (index == 2)
+                    {
+                        DisplayScoreBoard();
+                    }
+                    else if (index == 4)  //select 'Mute' to mute the program
+                    {
+                        if (SoundMute == true) 
+                        { 
+                            SoundMute = false;
+                            menuOpts[4] = "|   Mute Music   |";
+                        }
+                        else
+                        { 
+                            SoundMute = true; 
+                            menuOpts[4] = "|   Play Music   |";
+                        }
+                        PlayMusic("Background");
+                    }
+                    else if (index == 6)  //select 'Exit' to close the program
+                    {
+                        Environment.Exit(0);
+                    }
                 }
                 Console.Clear();
+            }
+        }
+
+        static void PlayMusic(string SoundType)
+        {
+            var BiteSound = new SoundPlayer(); BiteSound.SoundLocation = @"Sounds\Bite.wav";
+            var DamageSound = new SoundPlayer(); DamageSound.SoundLocation = @"Sounds\Damage.wav";
+            var GameOverSound = new SoundPlayer(); GameOverSound.SoundLocation = @"Sounds\GameOver.wav";
+            var BackgroundSound = new SoundPlayer(); BackgroundSound.SoundLocation = @"Sounds\Background.wav";
+
+            if (SoundMute == true) 
+            { 
+                BackgroundSound.Stop(); 
+            }
+            else
+            {
+                if (SoundType == "Background")
+                {
+                    BackgroundSound.PlayLooping();
+                }
+                else if (SoundType == "GameOver")
+                {
+                    GameOverSound.Play();
+                }
+                else if (SoundType == "Damage")
+                {
+                    DamageSound.Play();
+                }
+                else if (SoundType == "Bite")
+                {
+                    BiteSound.Play();
+                }
             }
         }
 
@@ -256,21 +336,16 @@ namespace Snake
                 lastFoodTime = negativePoints = foodpoints = 0;
                 int foodDissapearTime = 10000;
                 int health = 3;
-                int SoundPlayTime = 5;              //Score RequiredTo Win Game
+                int SoundPlayTime = 5;
+                int WinScore = 150; //Score RequiredTo Win Game
                 int GameHeightMax = 30;
                 int GameHeightMin = 4;
                 int userPoints = negativePoints;
                 int direction = right;
-                bool SoundCheck,pauseGame;
-                SoundCheck = pauseGame= false;
+                bool SoundCheck = false, pauseGame = false;
                 string PlayerName = "";
 
                 Random randomNumbersGenerator = new Random();
-               
-                var BiteSound = new SoundPlayer(); BiteSound.SoundLocation = @"Sounds\Bite.wav";
-                var DamageSound = new SoundPlayer(); DamageSound.SoundLocation = @"Sounds\Damage.wav";
-                var GameOverSound = new SoundPlayer(); GameOverSound.SoundLocation = @"Sounds\GameOver.wav";
-                var BackgroundSound = new SoundPlayer(); BackgroundSound.SoundLocation = @"Sounds\Background.wav";
 
                 //Snake directions from user - if any changes to this will only mess up the direction
                 Position[] directions = new Position[]
@@ -312,22 +387,45 @@ namespace Snake
                     snakeElements.Enqueue(new Position(4, i));
                 }
 
-                List<string> startMenu = new List<string>() {
+                List<string> startMenu = new List<string>() 
+                {
                     "|      Start     |", "\n\n", 
                     "|   ScoreBoard   |", "\n\n",
+                    "|   Mute Music   |", "\n\n",
                     "|      Exit      |"
                 };
+
+                List<string> PauseMenu = new List<string>()
+                {
+                    "|    Continue    |", "\n\n",
+                    "|   ScoreBoard   |", "\n\n",
+                    "|   Mute Music   |", "\n\n",
+                    "|      Exit      |"
+                };
+
+                List<string> OverMenu = new List<string>()
+                {
+                    "|  Back To Menu  |", "\n\n",
+                    "|   ScoreBoard   |", "\n\n",
+                    "|   Mute Music   |", "\n\n",
+                    "|      Exit      |"
+                };
+
                 Console.CursorVisible = false;
                 Console.WindowHeight = 34;
                 Console.WindowWidth = 125;
-                BackgroundSound.PlayLooping();
+
+                SoundMute = false;
+                PlayMusic("Background");
                 MainMenu(startMenu);
+                PlayMusic("Background");
+
                 PlayerName = NameScreen();
                 DrawSnake(snakeElements);
                 
-                for (; ;)
+                for (;;)
                 { 
-                    direction = InputCheck(up, down, left, right, direction,pauseGame); 
+                    direction = InputCheck(up, down, left, right, direction, pauseGame, PauseMenu); 
                     DrawObstacles(obstacles);
                     Position snakeHead = snakeElements.Last();
                     Position nextDirection = directions[direction];
@@ -343,13 +441,20 @@ namespace Snake
                     Console.SetCursorPosition(0, 0);
                     Console.ForegroundColor = ConsoleColor.Red;
                     userPoints = negativePoints;
-                    Console.WriteLine("Your Score  Points are: {0} \t\t\t\t Snake Game \t\t [Press 'SPACEBAR' key to Pause the game.] \nYour Health Points are: {1}\t\t\t\t Player: {2}", userPoints, health, PlayerName);
+                    Console.WriteLine("Your Score  Points are: {0}\nYour Health Points are: {1}", userPoints, health);
+                    Console.SetCursorPosition(57, 1);
+                    Console.WriteLine("Snake Game");
+                    Console.SetCursorPosition(110-PlayerName.Length, 1);
+                    Console.WriteLine("Player Name: {0}", PlayerName);
+                    Console.SetCursorPosition(0, 2);
                     Console.WriteLine("\n=============================================================================================================================");
                     Console.SetCursorPosition(0, 30);
                     Console.WriteLine("=============================================================================================================================");
-             
+                    Console.SetCursorPosition(45, 32);
+                    Console.Write("[Press 'ENTER' To Pause The Game]");
+
                     //Winning Game
-                    if (userPoints >= 150)
+                    if (userPoints >= WinScore)
                     {
                         Console.SetCursorPosition(0, 2);
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -361,42 +466,33 @@ namespace Snake
                     if (snakeElements.Contains(snakeNewHead) || obstacles.Contains(snakeNewHead))
                     {
                         Console.Clear();
-                        //DrawObstacles(obstacles);
-                        DamageSound.Play();
+                        PlayMusic("Damage");
                         SoundCheck = true;
                         health -= 1;
                         
                         if (health == 0)
                         {
-                            List<string> OverMenu = new List<string>() {
-                                                    "|  Back To Menu  |", "\n\n", 
-                                                    "|   ScoreBoard   |", "\n\n",
-                                                    "|      Exit      |"
-                            };
-                            GameOverSound.Play();
+                            PlayMusic("GameOver");
+                            WriteFile(PlayerName, userPoints);      //Write Name and Score to text File     
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Clear();
-                            Console.SetCursorPosition(59,10);
-                            if (userPoints >= 150)
+                            Console.SetCursorPosition(59,9);
+                            if (userPoints >= WinScore)
                             {
-                                Console.WriteLine("You Won!");
+                                Console.WriteLine("YOU WIN!");
                             }
                             else
                             {
-                                Console.WriteLine("Game over!");
+                                Console.WriteLine("GAME OVER!");
                             }
                             
                             foreach (string i in OverMenu)
                             {
-                                Console.SetCursorPosition(54, 11);
+                                Console.SetCursorPosition(54, 10);
                                 Console.WriteLine("Your Scored {0} points", userPoints);
                                 MainMenu(OverMenu);
                             }
-                            Console.SetCursorPosition(50, 14);
-                            WriteFile(PlayerName, userPoints);      //Write Name and Score to text File
-                            //Console.Write("Press The Enter Key to Exit");
-                            //while (Console.ReadKey().Key != ConsoleKey.Enter) { }
-                           
+                            Console.SetCursorPosition(50, 14);                      
                             break;
                         }
                     }
@@ -416,7 +512,7 @@ namespace Snake
                     {
                         if (snakeNewHead.col == food[i].col && snakeNewHead.row == food[i].row)
                         {
-                            BiteSound.Play();
+                            PlayMusic("Bite");
                             SoundCheck = true;
                             snakeElements.Enqueue(food[i]);
                             // feeding the snake
@@ -466,7 +562,7 @@ namespace Snake
                             lastFoodTime = Environment.TickCount;
                             foodpoints++;
                         }
-                    }
+                    }                  
 
                     DrawFood(food);
                     sleepTime -= 0.01;
@@ -476,7 +572,7 @@ namespace Snake
                     {
                         if (SoundPlayTime == 0)
                         {
-                            BackgroundSound.PlayLooping();
+                            PlayMusic("Background");
                             SoundPlayTime = 2;
                             SoundCheck = false;
                         }
@@ -488,6 +584,5 @@ namespace Snake
                 } 
             }
         }
-        
     }
 }
