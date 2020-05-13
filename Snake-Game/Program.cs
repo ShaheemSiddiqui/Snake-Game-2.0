@@ -206,45 +206,31 @@ namespace Snake
         { 
             int index = 0;
             string result = "";
-
-            if (SoundMute == true) menuOpts[4] = "|   Play Music   |";
-            else menuOpts[4] = "|   Mute Music   |";
-
+            
             while (true)
             {  
-                if (pointsGet >= pointsAim)                 //Points that reached the winning score wins the game
+                if (SoundMute == true) menuOpts[4] = "|   Play Music   |";
+                else menuOpts[4] = "|   Mute Music   |";
+                if (pointsGet >= pointsAim && noPoints == true)                 //Points that reached the winning score wins the game
                 {
-                    if (pointsGet == 0 || pointsAim == 0 )  //Points will be null if its 0 points for both startMenu and Pausemenu
-                    {
-                        pointsAim = pointsGet =null; 
-                        result = "";
-                    }else{
-                        result = "YOU WIN!";
-                    }
+                    result = "YOU WIN!";                       //to show the result 'GAME OVER!' after player gets 0 points
                 }
                 else if (pointsGet <= pointsAim)             //if points lower or equal than expected points to win loses the game and show the result 'GAME OVER!'
                 {
-                    if (pointsGet == 0 || pointsAim == 0 )  //Points will be null if its 0 points for both startMenu and Pausemenu
+                    if ((pointsGet == 0 || pointsAim == 0) && noPoints == false)  //Points will be null if its 0 points for both startMenu and Pausemenu
                     {
                         pointsAim = pointsGet = null; 
                         result = "";
-                    }else{
-                        result = "GAME OVER!";
-                    }
+                    }else if ((pointsGet == 0 || pointsAim == 0) && noPoints == true){            //to show the result 'GAME OVER!' after player gets 0 points
+                        result = "GAME OVER!";                       
+                    }else {result = "GAME OVER!";}
                 }
-                if (noPoints == true)                       //to show the result 'GAME OVER!' after player gets 0 points
-                {
-                    Console.SetCursorPosition(59,10); 
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    result = "GAME OVER!";}
-                else if (noPoints == false) 
-                {result = "";}
-               
+                
                 Console.Clear();
                 Console.SetCursorPosition(59,10); 
                 Console.ForegroundColor = ConsoleColor.Red;
                 //statement results for only back menu
-                Console.WriteLine(result +"\n\t\t\t\t\t\t      "+statement);
+                Console.WriteLine(result +"\n\t\t\t\t\t\t     "+statement);
                 //prints out the game title
                 Console.SetCursorPosition(41, 2);
                 Console.WriteLine("   ███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗");
@@ -338,8 +324,10 @@ namespace Snake
                         Environment.Exit(0);
                     }
                 }
-                Console.Clear();
-            }
+                else {Console.BackgroundColor = ConsoleColor.Black;
+                    //to prevent background from turning blue when player accidentally presses other keys (left and right keys)                 
+                }
+            }Console.Clear();
         }
 
         //Music plays or mute as the player so desires to choose
@@ -391,7 +379,7 @@ namespace Snake
                 int foodDissapearTime = 10000;
                 int health = 3;
                 int SoundPlayTime = 5;
-                int WinScore = 150; //Score RequiredTo Win Game
+                int WinScore = 100; //Score RequiredTo Win Game
                 int GameHeightMax = 30;
                 int GameHeightMin = 4;
                 int userPoints = negativePoints;
@@ -417,24 +405,18 @@ namespace Snake
                 lastFoodTime = Environment.TickCount;
 
                 //Creating Obstacles
-                List<Position> obstacles = new List<Position>()
+                List<Position> obstacles = new List<Position>();
+                for (int i = 0; i < 5; i ++)
                 {
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth))
-                };
+                    obstacles.Add (new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)));
+                }
 
                 //Creating Food
-                List<Position> food = new List<Position>()
+                List<Position> food = new List<Position>();
+                for (int i = 0; i < 4; i ++)
                 {
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)),
-                    new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth))
-                };
-
+                    food.Add(new Position(randomNumbersGenerator.Next(GameHeightMin,GameHeightMax), randomNumbersGenerator.Next(0,Console.WindowWidth)));
+                }
                 //Initialize Snake Length and Position
                 Queue<Position> snakeElements = new Queue<Position>();
                 for (int i = 0; i <= 3; i++)
