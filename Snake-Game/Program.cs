@@ -379,7 +379,7 @@ namespace Snake
                 int foodDissapearTime = 10000;
                 int health = 3;
                 int SoundPlayTime = 5;
-                int WinScore = 100; //Score RequiredTo Win Game
+                int WinScore = 150; //Score RequiredTo Win Game
                 int GameHeightMax = 30;
                 int GameHeightMin = 4;
                 int userPoints = negativePoints;
@@ -449,7 +449,7 @@ namespace Snake
                 };
 
                 Console.CursorVisible = false;
-                Console.WindowHeight = 34;
+                Console.WindowHeight = 36;
                 Console.WindowWidth = 125;
 
                 PlayMusic("Background");
@@ -485,16 +485,17 @@ namespace Snake
                     Console.WriteLine("\n=============================================================================================================================");
                     Console.SetCursorPosition(0, 30);
                     Console.WriteLine("=============================================================================================================================");
-                    Console.SetCursorPosition(45, 32);
+                    Console.SetCursorPosition(45, 34);
                     Console.Write("[Press 'ENTER' To Pause The Game]");
 
                     //Winning Game
                     if (userPoints >= WinScore)
                     {
-                        Console.SetCursorPosition(0, 2);
+                        Console.SetCursorPosition(17, 32);
+                        //Console.SetCursorPosition(0, 2);
                         Console.ForegroundColor = ConsoleColor.Red;
                         userPoints = negativePoints;
-                        Console.WriteLine("Congratulations you have reached 150 Points and Won the game but you can continue to play!");
+                        Console.WriteLine("Congratulations you have reached {0} Points and Won the game but you can continue to play!", WinScore);
                     }
 
                     //Game Over After Health = 0
