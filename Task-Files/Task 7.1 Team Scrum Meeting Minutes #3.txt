@@ -2,14 +2,19 @@ Date/Location: 12-MAY-2020 [SKYPE ONLINE]
 Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
 Start Time: [23:15PM]
 End Time: [23:29PM]
+
 Decisions
 =========
 * Decisions made during the meeting:
+	
 	1. Final check up on the snake program by trying every single feature in every program in the game
+
 	2. Last minute decision: 
 		Task:
 			Add Title and change icon application - Shaheem Siddqui (100072122)
+
 Actions
 =======
 *Main list needed:
-	*Same list from Task 7.1 Team Scrum Meeting Minutes #1 and #2*
+	**Same list from Task 7.1 Team Scrum Meeting Minutes #1 and #2**
+	
