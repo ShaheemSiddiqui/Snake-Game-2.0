@@ -1,0 +1,31 @@
+Date/Location: 10-MAY-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [23:20PM]
+End Time: [00:15AM]
+Decisions
+=========
+* Decisions made during the meeting:
+	1. The team will continue to use softwares:
+		a. Trello for decisions
+		b. Toggl for project tracking time
+		c. github repository and wiki for updated project
+		d. WhatsApp and Skype for communication
+	2. Both members will be cooperating on fixing, modifying and improving the codes according to the coding standards
+	3. Continue to use GitHub Branch
+	4. Distribution Tasks in Sprint Process improvement for final product: 
+		a. Shaheem Siddiqui (100072122) 
+			- Mute music and Player validation
+		b. Cheryl Chia Siaw Yu (100079424) 
+			- Main menu after game over and In-Game pause during the game
+	5. Next scrum meeting will be held if there are any problems raised in the team, via Skype
+	6. Maximum 24 hours to finish coding
+	7. Errors or bugs found from last few weeks needed to be fixed and improved
+	8. Maximum 4 scrum meetings
+Actions
+=======
+*Main list needed:
+	1. Continue to update new tasks given in Trello board, GitHub with GitHub branch
+	2. Update new Sprint Process(backlog) in Trello board (Pass Task 7.1)
+	3. Cooperate to check, work, fix, modify and improve the codes
+	4. Target date and time for final update of Week 6: [Thursday (14/5/2020), 12:00PM]
+	5. Confirmation if project is fixed and ready (Last scrum meeting)

@@ -1,0 +1,13 @@
+Date/Location: 11-MAY-2020 [SKYPE ONLINE]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [23:30PM]
+End Time: [23:50PM]
+Decisions
+=========
+* Decisions made during the meeting:
+	1. Help any member in need when stuck during their work
+	2. Work on the bugs and try to fix bugs and errors found on the spot before uploading to Github with Github branch
+Actions
+=======
+*Main list needed:
+	*Same list from Task 7.1 Team Scrum Meeting Minutes #1*
