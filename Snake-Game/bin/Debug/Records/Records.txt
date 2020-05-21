@@ -5,6 +5,6 @@ SuperMan 43
 Thor 15
 Loki 42
 HawkEye 88
-Shaheem 558
+Shaheem 954
 Hulk 70
-yoko 6184
+yoko 6035
