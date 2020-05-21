@@ -1,0 +1,40 @@
+Date/Location: 21-MAY-2020 [WHATSAPP CHAT]
+Attendees: [A-GRP7 MEMBERS: SHAHEEM SIDDIQUI (100072122), CHERYL CHIA SIAW YU (100079424)]
+Start Time: [00:07PM]
+End Time: [00:31AM]
+
+Decisions
+=========
+* Decisions before and during the meeting:
+	1. The team will continue to use softwares:
+		a. Trello for decisions
+		b. Toggl for project tracking time
+		c. github repository and wiki for updated project
+		d. WhatsApp for communication for Week 8
+
+	2. Help member when emergency
+
+	3. Continue to use GitHub Branch
+
+	4. Distribution Tasks in Sprint Process improvement for final product: 
+		a. Shaheem Siddiqui (100072122) 
+			- New Boundary Design, Added Side boundary, altered code to prevent snake to pass
+		b. Cheryl Chia Siaw Yu (100079424) 
+			- Changing symbols for food and obstacles
+	
+	5. Continue to improve what was left off if code improvement is not done yet
+
+Actions
+=======
+*Main list needed:
+	1. Continue to update new tasks given in Trello board, GitHub with GitHub branch
+	
+	2. Update new Sprint Process(backlog) in Trello board (Pass Task 8.1)
+	
+	3. Cooperate to check, work, fix, modify and improve the codes
+
+	4. Target date and time for final update of Week 8: [Thursday(21/5/2020), 12:00PM]
+
+	5. Confirmation if project is fixed and ready
+
+	6. Continue if code improvement is not yet fixed by Week 9
