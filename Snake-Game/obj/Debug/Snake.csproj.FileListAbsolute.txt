@@ -96,3 +96,10 @@ C:\Users\Shaheem\Desktop\sdf\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csprojAss
 C:\Users\Shaheem\Desktop\sdf\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csproj.CoreCompileInputs.cache
 C:\Users\Shaheem\Desktop\sdf\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.exe
 C:\Users\Shaheem\Desktop\sdf\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.pdb
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe.config
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.exe
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\bin\Debug\Snake.pdb
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csprojAssemblyReference.cache
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.csproj.CoreCompileInputs.cache
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.exe
+C:\Users\Shaheem\Desktop\Work\SWE20001 Development Project 1 - Tools and Practices\SWE20001 Pass Tasks 9\Snake-Game-2.0\Snake-Game\obj\Debug\Snake.pdb

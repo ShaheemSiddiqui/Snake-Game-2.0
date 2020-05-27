@@ -41,7 +41,7 @@ namespace Snake
             {
                 Console.SetCursorPosition(i.col-1, i.row);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("♥{0}♥",foodpoint);
+                Console.Write("♥{0}♥", foodpoint);
                 foodpoint++;
             }
         }
@@ -53,7 +53,7 @@ namespace Snake
             {
                 Console.SetCursorPosition(i.col, i.row);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("֍");
+                Console.Write("●");
             }
         }
 
@@ -153,6 +153,48 @@ namespace Snake
             {
                 File.AppendAllText(FileName, PlayerName + " " + userPoints + Environment.NewLine);
             }
+
+            //Sorting in the Descending order of Score Below
+            string[] NewLine = File.ReadAllLines(FileName);
+            string[] Name = new string[NewLine.Length];
+            int[] Score = new int[NewLine.Length];
+
+            for (int i = 0; i < NewLine.Length; i++)
+            {
+                Name[i] = (Regex.Replace(NewLine[i], "[^a-zA-Z]", ""));
+                Score[i] = Int32.Parse(Regex.Replace(NewLine[i], "[^0-9]", ""));
+            }
+
+            File.WriteAllText(FileName, String.Empty);                          //Deletes all data in Text File
+
+
+            for (int i = 0; i < NewLine.Length; i++)
+            {
+                for (int j = 0; j < NewLine.Length - 1; j++)
+                {
+                    if (Score[j] < Score[j + 1])
+
+                    {
+                        int itemp = Score[j + 1];
+                        Score[j + 1] = Score[j];
+                        Score[j] = itemp;
+
+                        string stemp = Name[j + 1];
+                        Name[j + 1] = Name[j];
+                        Name[j] = stemp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < NewLine.Length; i++)
+            {
+                NewLine[i] = Name[i] + " " + Score[i];
+            }
+
+            foreach (string i in NewLine)                                          //Adds Each Line to the file
+            {
+                File.AppendAllText(FileName, i + Environment.NewLine);
+            }
         }
 
         //Displays Score Board
@@ -160,11 +202,13 @@ namespace Snake
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(40, 1);
+            Console.SetCursorPosition(49, 1);
+            Console.WriteLine("ScoreBoard - Top 5 Players");
+            Console.SetCursorPosition(40, 3);
             Console.Write("Player Name");
-            Console.SetCursorPosition(70, 1);
+            Console.SetCursorPosition(70, 3);
             Console.Write("Total Score");
-            Console.SetCursorPosition(0, 2);
+            Console.SetCursorPosition(0, 4);
             Console.WriteLine("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
 
             string FileName = @"Records\records.txt";
@@ -178,11 +222,11 @@ namespace Snake
                 Score.Add(Regex.Replace(i, "[^0-9]", ""));
             }
 
-            for (int i = 0; i < Name.Count; i++)
+            for (int i = 0; i <= 5; i++)
             {
-                Console.SetCursorPosition(40, i + 3);
+                Console.SetCursorPosition(40, i + 5);
                 Console.Write(Name[i]);
-                Console.SetCursorPosition(70, i + 3);
+                Console.SetCursorPosition(70, i + 5);
                 Console.Write(Score[i]);
             }
 
@@ -526,7 +570,7 @@ namespace Snake
                     }
                     Console.SetCursorPosition(snakeHead.col, snakeHead.row);
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("֍");
+                    Console.Write("●");
                     
                     snakeElements.Enqueue(snakeNewHead);
                     Console.SetCursorPosition(snakeNewHead.col, snakeNewHead.row);
@@ -564,7 +608,7 @@ namespace Snake
                             {
                                 obstaclecheck = new Position(randomNumbersGenerator.Next(GameHeightMin, GameHeightMax), randomNumbersGenerator.Next(2, Console.WindowWidth - 2));
                             }
-                            while (snakeElements.Contains(obstaclecheck) || obstacles.Contains(obstaclecheck) && (food[i].row != obstaclecheck.row && (food[i].col != obstaclecheck.col || food[i].col-1 != obstaclecheck.col || food[i].col+1 != obstaclecheck.col))); // && is the right code to prevent the blocks from staying the same line as food when random position
+                            while (snakeElements.Contains(obstaclecheck) || obstacles.Contains(obstaclecheck) && (food[i].row != obstaclecheck.row && food[i].col != obstaclecheck.col)); // && is the right code to prevent the blocks from staying the same line as food when random position
                             obstacles.Add(obstaclecheck);
                             DrawObstacles(obstacles);
                             break;
@@ -581,7 +625,7 @@ namespace Snake
                     {
                         for (int i = 0; i < 4; i++)
                         {
-                            Console.SetCursorPosition(food[i].col-2, food[i].row);
+                            Console.SetCursorPosition(food[i].col-1, food[i].row);
                             Console.Write("   ");
 
                             do
