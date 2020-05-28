@@ -222,7 +222,7 @@ namespace Snake
                 Score.Add(Regex.Replace(i, "[^0-9]", ""));
             }
 
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Console.SetCursorPosition(40, i + 5);
                 Console.Write(Name[i]);
@@ -608,7 +608,7 @@ namespace Snake
                             {
                                 obstaclecheck = new Position(randomNumbersGenerator.Next(GameHeightMin, GameHeightMax), randomNumbersGenerator.Next(2, Console.WindowWidth - 2));
                             }
-                            while (snakeElements.Contains(obstaclecheck) || obstacles.Contains(obstaclecheck) && (food[i].row != obstaclecheck.row && food[i].col != obstaclecheck.col)); // && is the right code to prevent the blocks from staying the same line as food when random position
+                            while (snakeElements.Contains(obstaclecheck) || obstacles.Contains(obstaclecheck) && (food[i].row != obstaclecheck.row && food[i].col != obstaclecheck.col && food[i].col != obstaclecheck.col-1 && food[i].col != obstaclecheck.col+1)); // && is the right code to prevent the blocks from staying the same line as food when random position
                             obstacles.Add(obstaclecheck);
                             DrawObstacles(obstacles);
                             break;
